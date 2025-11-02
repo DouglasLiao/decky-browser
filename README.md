@@ -1,14 +1,32 @@
 # Decky Browser Plugin
 
-Um plugin de browser simples e leve para o Decky Loader no Steam Deck.
+Um plugin de browser simples e leve para o Decky Loader no Steam Deck com suporte a **browser isolado em Docker**.
 
 ## 🚀 Características
 
-- **Browser leve**: Baseado em WebView para máxima performance
+- **Dois modos de browser**:
+  - **WebView nativo**: Browser integrado para navegação básica
+  - **Browser isolado (Docker)**: Browser completo em container isolado
+- **À prova de atualizações**: Browser Docker não é afetado por atualizações do Steam Deck
 - **Interface simples**: Navegação intuitiva com botões de voltar, avançar, home e refresh
 - **Barra de endereços**: Digite URLs ou termos de busca diretamente
 - **Integração nativa**: Funciona perfeitamente com o Decky Loader
 - **Build automatizado**: Sistema completo de build e instalação usando Docker
+
+## 🐳 Browser Isolado (Recomendado)
+
+### **Vantagens do Browser Docker:**
+- ✅ **Isolado do sistema**: Roda em container separado
+- ✅ **Persistente**: Não é afetado por atualizações do Steam Deck
+- ✅ **Completo**: Browser Chromium completo com todas as funcionalidades
+- ✅ **Seguro**: Ambiente isolado e controlado
+- ✅ **Acesso remoto**: Pode ser acessado via web (noVNC)
+
+### **Como usar:**
+1. Instalar o plugin
+2. Escolher "Browser Isolado (Docker)" 
+3. Sistema inicia container automaticamente
+4. Browser completo disponível!
 
 ## 📋 Pré-requisitos
 

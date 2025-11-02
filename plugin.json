@@ -1,6 +1,8 @@
 {
   "name": "Simple Browser",
-  "author": "Your Name",
-  "description": "A simple browser plugin for Steam Deck",
-  "publish_branch": "main"
+  "author": "Douglas Liao",
+  "description": "A simple browser plugin for Steam Deck - Auto-installs from ZIP",
+  "publish_branch": "main",
+  "flags": ["_dev"],
+  "auto_install": true
 }

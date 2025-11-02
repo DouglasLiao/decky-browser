@@ -39,6 +39,10 @@ cp -r build-output/* "$TEMP_DIR/"
 # Copiar o main.py (backend Python)
 cp main.py "$TEMP_DIR/"
 
+# Copiar scripts de auto-instalação
+cp auto_install.py "$TEMP_DIR/"
+cp dev_init.sh "$TEMP_DIR/"
+
 # Criar script de instalação para Steam Deck
 cat > "$TEMP_DIR/install.sh" << 'EOF'
 #!/bin/bash

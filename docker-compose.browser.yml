@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  # Browser isolado em container
+  decky-browser-container:
+    build:
+      context: .
+      dockerfile: Dockerfile.browser
+    container_name: decky-browser-isolated
+    ports:
+      - "6080:6080"  # noVNC web interface
+      - "5901:5901"  # VNC direct access
+    volumes:
+      - browser_data:/home/browser/.config/chromium
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    environment:
+      - DISPLAY=:1
+    restart: unless-stopped
+    security_opt:
+      - seccomp:unconfined
+    networks:
+      - browser_network
+
+  # Plugin Decky que se conecta ao browser
+  decky-browser-plugin:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: decky-browser-plugin
+    volumes:
+      - ./build-output:/output
+      - ${DECKY_HOME:-$HOME/homebrew}:/decky:rw
+    environment:
+      - NODE_ENV=production
+      - BROWSER_CONTAINER_URL=http://decky-browser-container:6080
+    depends_on:
+      - decky-browser-container
+    networks:
+      - browser_network
+    command: >
+      sh -c "
+        echo 'Building Decky Browser Plugin...' &&
+        cp -r /plugin/* /output/ &&
+        echo 'Plugin built! Browser running at http://localhost:6080'
+      "
+
+volumes:
+  browser_data:
+    driver: local
+
+networks:
+  browser_network:
+    driver: bridge
