@@ -1,12 +1,8 @@
 import { VFC, useState, useEffect } from "react";
 import {
-  ModalRoot,
+  ConfirmModal,
   DialogBody,
   DialogControlsSection,
-  DialogButton,
-  TextField,
-  staticClasses,
-  ConfirmModal,
 } from "decky-frontend-lib";
 
 interface BrowserModalProps {
@@ -93,74 +89,146 @@ const BrowserModal: VFC<BrowserModalProps> = ({ serverAPI }) => {
       <DialogBody>
         {/* Navigation Bar */}
         <DialogControlsSection>
-          <div className="decky-browser-nav">
+          <div style={{
+            display: "flex",
+            gap: "8px",
+            marginBottom: "10px"
+          }}>
             <button
-              className="decky-browser-nav-button"
               onClick={handleGoBack}
               disabled={isLoading}
               title="Back"
+              style={{
+                minWidth: "40px",
+                padding: "8px",
+                background: "#3d4450",
+                border: "1px solid #5c6b7a",
+                borderRadius: "4px",
+                color: "white",
+                cursor: "pointer"
+              }}
             >
               ←
             </button>
             <button
-              className="decky-browser-nav-button"
               onClick={handleGoForward}
               disabled={isLoading}
               title="Forward"
+              style={{
+                minWidth: "40px",
+                padding: "8px",
+                background: "#3d4450",
+                border: "1px solid #5c6b7a",
+                borderRadius: "4px",
+                color: "white",
+                cursor: "pointer"
+              }}
             >
               →
             </button>
             <button
-              className="decky-browser-nav-button"
               onClick={handleRefresh}
               disabled={isLoading}
               title="Refresh"
+              style={{
+                minWidth: "40px",
+                padding: "8px",
+                background: "#3d4450",
+                border: "1px solid #5c6b7a",
+                borderRadius: "4px",
+                color: "white",
+                cursor: "pointer"
+              }}
             >
               ↻
             </button>
             <button
-              className="decky-browser-nav-button"
               onClick={handleGoHome}
               disabled={isLoading}
               title="Home"
+              style={{
+                minWidth: "40px",
+                padding: "8px",
+                background: "#3d4450",
+                border: "1px solid #5c6b7a",
+                borderRadius: "4px",
+                color: "white",
+                cursor: "pointer"
+              }}
             >
               🏠
             </button>
           </div>
 
           {/* URL Bar */}
-          <div className="decky-browser-url-bar">
+          <div style={{
+            display: "flex",
+            gap: "8px",
+            marginBottom: "10px"
+          }}>
             <input
-              className="decky-browser-url-input"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
               onKeyPress={handleKeyPress}
               placeholder="Enter URL or search term..."
+              style={{
+                flex: "1",
+                padding: "8px",
+                background: "#0e141b",
+                border: "1px solid #3d4450",
+                borderRadius: "4px",
+                color: "white",
+                fontSize: "14px"
+              }}
             />
             <button 
-              className="decky-browser-go-button"
               onClick={handleNavigate} 
               disabled={isLoading}
+              style={{
+                padding: "8px 16px",
+                background: "#0077be",
+                border: "1px solid #005a8b",
+                borderRadius: "4px",
+                color: "white",
+                cursor: "pointer"
+              }}
             >
               Go
             </button>
           </div>
 
           {isLoading && (
-            <div className="decky-browser-loading">
+            <div style={{
+              textAlign: "center",
+              margin: "10px 0",
+              color: "#dcdedf",
+              fontSize: "14px"
+            }}>
               Loading...
             </div>
           )}
         </DialogControlsSection>
 
         {/* Browser Content */}
-        <div className="decky-browser-webview-container">
+        <div style={{
+          width: "100%",
+          height: "500px",
+          border: "1px solid #3d4450",
+          borderRadius: "4px",
+          overflow: "hidden",
+          backgroundColor: "#0e141b"
+        }}>
           <webview
             id="browser-webview"
             src={currentUrl}
-            className="decky-browser-webview"
             allowpopups={true}
             useragent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+            style={{
+              width: "100%",
+              height: "100%",
+              display: "block",
+              border: "none"
+            }}
           />
         </div>
       </DialogBody>
