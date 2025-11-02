@@ -1,0 +1,139 @@
+/* Estilos para o plugin Decky Browser */
+
+.decky-browser-container {
+  margin-top: 50px;
+  color: white;
+}
+
+.decky-browser-title {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.decky-browser-button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.decky-browser-open-button {
+  min-height: 40px;
+  min-width: 150px;
+  background: linear-gradient(135deg, #0077be, #005a8b);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+}
+
+.decky-browser-open-button:hover {
+  background: linear-gradient(135deg, #0088d4, #0066a0);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 119, 190, 0.3);
+}
+
+.decky-browser-open-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 119, 190, 0.3);
+}
+
+/* Estilos para o modal do browser */
+.decky-browser-nav {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.decky-browser-nav-button {
+  min-width: 40px;
+  padding: 8px;
+  background: #3d4450;
+  border: 1px solid #5c6b7a;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.decky-browser-nav-button:hover {
+  background: #4a5563;
+}
+
+.decky-browser-nav-button:disabled {
+  background: #2a2f37;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.decky-browser-url-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.decky-browser-url-input {
+  flex: 1;
+  padding: 8px;
+  background: #0e141b;
+  border: 1px solid #3d4450;
+  border-radius: 4px;
+  color: white;
+  font-size: 14px;
+}
+
+.decky-browser-url-input:focus {
+  outline: none;
+  border-color: #0077be;
+  box-shadow: 0 0 0 2px rgba(0, 119, 190, 0.2);
+}
+
+.decky-browser-go-button {
+  padding: 8px 16px;
+  background: #0077be;
+  border: 1px solid #005a8b;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.decky-browser-go-button:hover {
+  background: #0088d4;
+}
+
+.decky-browser-go-button:disabled {
+  background: #2a2f37;
+  border-color: #2a2f37;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.decky-browser-loading {
+  text-align: center;
+  margin: 10px 0;
+  color: #dcdedf;
+  font-size: 14px;
+}
+
+.decky-browser-webview-container {
+  width: 100%;
+  height: 500px;
+  border: 1px solid #3d4450;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #0e141b;
+}
+
+.decky-browser-webview {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: none;
+}

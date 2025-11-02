@@ -1,0 +1,6 @@
+{
+  "name": "Simple Browser",
+  "author": "Your Name",
+  "description": "A simple browser plugin for Steam Deck",
+  "publish_branch": "main"
+}

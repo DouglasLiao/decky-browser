@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  decky-browser-build:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: decky-browser-builder
+    volumes:
+      # Volume para exportar o plugin built
+      - ./build-output:/output
+      # Volume para instalação direta no Steam Deck (se necessário)
+      - ${DECKY_HOME:-$HOME/homebrew}:/decky:rw
+    environment:
+      - NODE_ENV=production
+    command: >
+      sh -c "
+        echo 'Building Decky Browser Plugin...' &&
+        cp -r /plugin/* /output/ &&
+        echo 'Build completed! Files available in ./build-output' &&
+        echo 'To install manually, copy contents to: \$DECKY_HOME/plugins/decky-browser'
+      "
+
+  # Serviço para instalação direta (quando executado no Steam Deck)
+  decky-browser-install:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: decky-browser-installer
+    volumes:
+      - ${DECKY_HOME:-$HOME/homebrew}:/decky:rw
+    environment:
+      - DECKY_HOME=/decky
+    command: sh install.sh
+
+  # Serviço para desenvolvimento com hot reload
+  decky-browser-dev:
+    image: node:18-alpine
+    container_name: decky-browser-dev
+    working_dir: /app
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    command: >
+      sh -c "
+        npm install -g pnpm &&
+        pnpm install &&
+        pnpm run watch
+      "
